@@ -1,0 +1,63 @@
+# starship.toml
+
+add_newline = false
+command_timeout = 1000
+format = """$os$username$hostname$directory$git_branch$git_status$python$nodejs """
+
+[os]
+format = '[$symbol](bold white)'   
+disabled = false
+
+[os.symbols]
+Windows = ''
+Ubuntu = ''
+
+
+[username]
+style_user = 'bold fg:#D8DEE9'
+style_root = 'bold bg:#BF616A fg:#E5E9F0'
+format = '[ $user]($style) '
+disabled = false
+show_always = true
+
+[hostname]
+style = "bold fg:#EBCB8B"
+format = "[ $hostname ]($style)"
+ssh_only = false
+disabled = false
+
+[directory]
+style = "bold fg:#D08770"
+format = '[ $path]($style)'
+truncation_length = 1
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ' '
+format = '[$symbol$branch]($style)'
+# truncation_length = 4
+truncation_symbol = '…/'
+style = 'bold fg:#A3BE8C'
+
+# Shows current git status
+[git_status]
+format = '[$all_status$ahead_behind]($style) '
+style = 'bold fg:#A3BE8C'
+conflicted = '🏳'
+up_to_date = ''
+untracked = ' '
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+stashed = ' '
+modified = ' '
+staged = '[++\($count\)](fg:#A3BE8C)'
+renamed = '襁 '
+deleted = ' '
+
+
+[nodejs]
+format = '[$symbol($version)](bold fg:#3C873A)'  
+
+[python]
+format = '[$symbol|($version)|](bold fg:#EBCB8B)[($virtualenv activated)](bold fg:#D08770)'
