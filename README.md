@@ -1,2 +1,2 @@
 # Project Title 
-This is a basic README file for your project.
+This is the starship config used to generate my command prompt customizations. 
