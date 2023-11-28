@@ -1,34 +1,54 @@
 # starship.toml
 
 add_newline = false
+
 command_timeout = 1000
-format = """$os$username$hostname$directory$git_branch$git_status$python$nodejs """
+
+format = """
+[](bg:black fg:purple)\
+$os\
+[](bg:green fg:purple)\
+$username\
+[](bg:cyan fg:green)\
+$hostname\
+[](bg:blue fg:cyan)\
+$directory\
+[](bg:black fg:blue) \
+  \
+"""
+
+right_format = """
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$docker_context\
+$time"""
 
 [os]
-format = '[$symbol](bold white)'   
+format = '[$symbol ](bg:purple fg:black)'   
 disabled = false
 
 [os.symbols]
-Windows = ''
+Windows = '󰖳'
 Ubuntu = ''
 
-
 [username]
-style_user = 'bold fg:#D8DEE9'
-style_root = 'bold bg:#BF616A fg:#E5E9F0'
-format = '[ $user]($style) '
+style_user = 'bg:green fg:black'
+style_root = 'bg:red fg:black'
+format = '[ 󰠆 ]($style)'
 disabled = false
 show_always = true
 
 [hostname]
-style = "bold fg:#EBCB8B"
-format = "[ $hostname ]($style)"
+style = "fg:black bg:cyan"
+format = "[  󰀝 ]($style)"
 ssh_only = false
 disabled = false
 
 [directory]
-style = "bold fg:#D08770"
-format = '[ $path]($style)'
+style = "bold fg:black bg:blue"
+format = '[  $path]($style)'
 truncation_length = 1
 truncation_symbol = "…/"
 
@@ -37,12 +57,12 @@ symbol = ' '
 format = '[$symbol$branch]($style)'
 # truncation_length = 4
 truncation_symbol = '…/'
-style = 'bold fg:#A3BE8C'
+style = 'bold fg:green'
 
 # Shows current git status
 [git_status]
 format = '[$all_status$ahead_behind]($style) '
-style = 'bold fg:#A3BE8C'
+style = 'bold fg:green'
 conflicted = '🏳'
 up_to_date = ''
 untracked = ' '
@@ -51,13 +71,27 @@ diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
 stashed = ' '
 modified = ' '
-staged = '[++\($count\)](fg:#A3BE8C)'
+staged = '[++\($count\)](fg:green)'
 renamed = '襁 '
 deleted = ' '
-
 
 [nodejs]
 format = '[$symbol($version)](bold fg:#3C873A)'  
 
 [python]
 format = '[$symbol|($version)|](bold fg:#EBCB8B)[($virtualenv activated)](bold fg:#D08770)'
+
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[ $symbol $context ]($style) $path'
+
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "fg:black bg:blue"
+format = '[ 󱓞 $time ]($style)'
+
+
+
